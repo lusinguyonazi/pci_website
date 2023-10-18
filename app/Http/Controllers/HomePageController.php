@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\SiteID;
 
-use App\Models\NewsAndEvents;
+
 use Illuminate\Http\Request;
 
-class NewsAndEventsController extends Controller
+class HomePageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +14,9 @@ class NewsAndEventsController extends Controller
     public function index()
     {
         //
+        $data = siteID::all();
+
+        return view('public/pci_home',compact('data'));
     }
 
     /**
@@ -34,7 +38,7 @@ class NewsAndEventsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(NewsAndEvents $newsAndEvents)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +46,7 @@ class NewsAndEventsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NewsAndEvents $newsAndEvents)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +54,7 @@ class NewsAndEventsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NewsAndEvents $newsAndEvents)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +62,7 @@ class NewsAndEventsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NewsAndEvents $newsAndEvents)
+    public function destroy(string $id)
     {
         //
     }

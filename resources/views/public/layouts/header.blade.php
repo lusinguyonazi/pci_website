@@ -2,16 +2,16 @@
     <div class="topbar clearfix">
         <div class="container">
             <ul class="topbar-left">
-                <li class="phoneNo"><i class="fa fa-phone"></i>0123 45678910</li>
+                <li class="phoneNo"><i class="fa fa-phone"></i>{{$item->phone}}</li>
                 <li class="email-id hidden-xs hidden-sm"><i class="fa fa-envelope"></i>
-                    <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+                    <a href="{{$item->email}}">{{$item->email}}</a>
                 </li>
             </ul>
             <ul class="topbar-right">
-                <li class="hidden-xs"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li class="hidden-xs"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                <li class="hidden-xs"><a href="{{$item->twitter}}"><i class="fa fa-twitter"></i></a></li>
+                <li class="hidden-xs"><a href="{{$item->facebook}}"><i class="fa fa-facebook"></i></a></li>
+                <li class="hidden-xs"><a href="{{route('homePage')}}"><i class="fa fa-google-plus"></i></a></li>
+                <li class="hidden-xs"><a href="{{$item->youtube}}"><i class="fa fa-youtube-play"></i></a></li>
                 <li class="hidden-xs"><a href="#"><i class="fa fa-rss"></i></a></li>
                 <li class="top-search list-inline">
                     <a href="#"><i class="fa fa-search"></i></a>
@@ -57,7 +57,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-                                <a class="navbar-brand logo clearfix" href="index.html"><img src="img/logo.png" alt="" class="img-responsive" /></a>
+                                <a class="navbar-brand logo clearfix" href="index.html"><img src="{{$item->image}}" alt="" class="img-responsive" /></a>
                             </div>
 
                             <!-- Collect the nav links, forms, and other content for toggling -->

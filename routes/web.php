@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\SiteIDController;
 use App\Models\NewsAndEvents;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,7 @@ use App\Http\Controllers\NewsAndEventsController;
 |
 */
 
-Route::get('/', function () {
-    return view('public/pci_home');
-});
+Route::get('/', [HomePageController::class, 'index'])->name('homePage');
 
 
 Route::prefix('admin')->group(function () {
@@ -30,9 +29,7 @@ Route::prefix('admin')->group(function () {
     Route::post('storeSiteID/{id}',[SiteIDController::class, 'store'])->name('storeID');
     Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
 
-    // News and Events
-    Route::post('store/{id}',[NewsAndEventsIDController::class, 'store'])->name('storenews');
-    Route::get('updateNewsAndEvents',[NewsAndEventsController::class, 'show'])->name('updatenews');
+    
 });
 
 Auth::routes();
