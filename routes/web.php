@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function () {
     });
     // Route::get('siteID',[SiteIDController::class, 'index'])->name('siteID');
     // Route::get('insert',[SiteIDController::class, 'show'])->name('insertID');
-    Route::post('store/{id}',[SiteIDController::class, 'store'])->name('storeID');
+    Route::post('storeSiteID/{id}',[SiteIDController::class, 'store'])->name('storeID');
     Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
 
     // News and Events
