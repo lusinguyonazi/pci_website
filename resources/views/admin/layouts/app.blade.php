@@ -34,7 +34,18 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('admin/css/theme.min.css') }}">
-    <title>Analytics | Dash UI - Bootstrap 5 Admin Dashboard Template</title>
+
+   <!-- Toastar notifications -->
+
+    <title>Analytics</title>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+   <link rel="stylesheet" type="text/css" 
+	href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body>
@@ -53,7 +64,43 @@
 
 
 
-
+    <script>
+        @if(Session::has('message'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.success("{{ session('message') }}");
+        @endif
+      
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.error("{{ session('error') }}");
+        @endif
+      
+        @if(Session::has('info'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.info("{{ session('info') }}");
+        @endif
+      
+        @if(Session::has('warning'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.warning("{{ session('warning') }}");
+        @endif
+      </script>
     <!-- Libs JS -->
     <script src="{{ asset('admin/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -70,6 +117,9 @@
     <script src="{{ asset('admin/libs/jsvectormap/dist/maps/world.js') }}"></script>
     <script src="{{ asset('admin/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('admin/js/vendors/chart.js') }}"></script>
+
+
+
 
 
 

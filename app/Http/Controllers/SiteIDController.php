@@ -67,7 +67,7 @@ class SiteIDController extends Controller
 
     $siteID->save();
 }
-    return redirect()->back()->with('success', 'Data has been inserted successfully.');
+    return redirect()->back()->with('message', 'Data has been update successfully.');
 }
 
 
