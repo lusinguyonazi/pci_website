@@ -34,9 +34,10 @@
 
                                             <!-- Tab content -->
                                             @foreach($site as $item)
-                                            <form class="row g-3 needs-validation" novalidate method="post" action="{{route('storeID',['id' => $item->id])}}">
+                                            <form class="row g-3 needs-validation"  method="post" action="{{route('storeID', $item->id)}}" enctype="multipart/form-data">
                                                 {{-- <form class="row g-3 needs-validation" novalidate method="post" action="{{ route('updateData', ['id' => $yourModel->id]) }}"> --}}
                                                 @csrf
+                                                <input type="hidden" name="id" value="{{$item->id}}">
                                                 <div class="tab-content p-4" id="pills-tabContent-basic-forms">
                                                     <div class="tab-pane tab-example-design fade show active"
                                                         id="pills-basic-forms-design" role="tabpanel"
@@ -53,7 +54,7 @@
                                                         <div class="mb-3">
                                                             <label class="form-label" for="textInput">Site's Logo </label>
                                                             <input type="file" id="textInput" class="form-control"
-                                                                name="image"value="{{$item->image_path}}">
+                                                                name="image">
                                                         </div>
 
                                                         <!-- email -->

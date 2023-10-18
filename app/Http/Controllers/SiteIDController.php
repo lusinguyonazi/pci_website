@@ -13,7 +13,7 @@ class SiteIDController extends Controller
     public function index()
     {
         //
-       
+
     }
 
     /**
@@ -31,44 +31,19 @@ class SiteIDController extends Controller
     {
         //
         $site = siteID::all();
-        return view('admin.siteid',compact('site'));
-
-        
+        return view('admin.siteid', compact('site'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function store(Request $request,$id)
-    
-    
+    public function store(Request $request, $id)
     {
-       
-        if (
-            $request->input('name')!=null||$request->input('phone')!=null||$request->input('phone2')!=null
-            ||$request->input('email')!=null||$request->input('facebook')!=null
-            ||$request->input('twitter')!=null||$request->input('youtube')!=null
-            ||$request->input('instagram')!=null||$request->input('image')!=null
-        ){
-    $siteID = SiteID::findOrFail($id);
-    $siteID->name = $request->input('name');
-    $siteID->phone = $request->input('phone');
-    $siteID->phone2 = $request->input('phone2');
-    $siteID->email = $request->input('email');
-    $siteID->facebook = $request->input('facebook');
-    $siteID->twitter = $request->input('twitter');
-    $siteID->youtube = $request->input('youtube');
-    $siteID->instagram = $request->input('instagram');
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('images');
-        $siteID->image_path = $imagePath;
+        
     }
 
 
-    $siteID->save();
-}
-    return redirect()->back()->with('message', 'Data has been update successfully.');
-}
+   
 
 
 
@@ -83,40 +58,41 @@ class SiteIDController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request,SiteID $siteid)
+   
+
     {
-        //
+        $id = $request->id;
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'twitter' => '',
+            'facebook' => '',
+            'youtube' => '',
+            'phone' => 'required',
+            'phone2' => '',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           
+        ]);
+        $data = $request->all();
 
-        // $siteID = SiteID::findOrFail($id);
+        if($image = $request->file('image')) {
+            $destinationPath = 'LogoImage';
+            $LogoImage = date('YmdHis') . "." .$image->getClientOriginalExtension();
+            $image->move($destinationPath, $LogoImage);
+            $request->image = "$LogoImage";
+         
+
+}
+
+$siteid = SiteID::findOrFail($id);
 
 
-        {
-            if (
-                $request->input('name')!=null||$request->input('phone')!=null||$request->input('phone2')!=null
-                ||$request->input('email')!=null||$request->input('facebook')!=null
-                ||$request->input('twitter')!=null||$request->input('youtube')!=null
-                ||$request->input('instagram')!=null||$request->input('image')!=null
-            ){
-        $siteID = new siteID;
-        $siteID->name = $request->input('name');
-        $siteID->phone = $request->input('phone');
-        $siteID->phone2 = $request->input('phone2');
-        $siteID->email = $request->input('email');
-        $siteID->facebook = $request->input('facebook');
-        $siteID->twitter = $request->input('twitter');
-        $siteID->youtube = $request->input('youtube');
-        $siteID->instagram = $request->input('instagram');
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images');
-            $siteID->image_path = $imagePath;
-        }
-    
-    
-        $siteID->save();
-    }
-        return redirect()->back()->with('success', 'Data has been inserted successfully.');
-    }
 
+
+        $siteid ->update($data);
+
+        return redirect()->back()->with('message','Form added Successfully');
     }
 
     /**

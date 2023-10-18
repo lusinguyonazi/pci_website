@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function () {
     });
     // Route::get('siteID',[SiteIDController::class, 'index'])->name('siteID');
     // Route::get('insert',[SiteIDController::class, 'show'])->name('insertID');
-    Route::post('storeSiteID/{id}',[SiteIDController::class, 'store'])->name('storeID');
+    Route::post('storeSiteID/{id}',[SiteIDController::class, 'update'])->name('storeID');
     Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
     Route::get('news',[NewsController::class, 'showNews'])->name('news');
     Route::post('store', [NewsController::class, 'store'])->name('news.store');

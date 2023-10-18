@@ -30,44 +30,25 @@
                     <div class="related_post_sec single_post">
                         <h3>Recent News</h3>
                         <ul>
+                            @foreach ($news as $news)
                             <li>
                                 <span class="rel_thumb">
-                                    <a href="single-post-right-sidebar.html"><img src="img/news/related_thumb_01.png"
+                                    <a href="single-post-right-sidebar.html"><img src="{{asset('NewsImage')}}/{{$news->image}}"
                                             alt=""></a>
                                 </span>
                                 <!--end rel_thumb-->
                                 <div class="rel_right">
-                                    <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply
-                                            dummy Text Lorem Ipsum dolar</a></h4>
+                                    <h4><a href="single-post-right-sidebar.html">{{$news->title}}</a></h4>
                                     <div class="meta">
                                         <span class="author">Posted in: <a href="#">Update</a></span>
-                                        <span class="date">on: <a href="#">January 24, 2015</a></span>
+                                        <span class="date">on: <a href="#">{{$news->newsDate}}</a></span>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation...</p>
+                                    <p>{{$news->description}}</p>
                                 </div>
                                 <!--end rel right-->
                             </li>
-                            <li>
-                                <span class="rel_thumb">
-                                    <a href="single-post-right-sidebar.html"><img src="img/news/related_thumb_02.jpg"
-                                            alt=""></a>
-                                </span>
-                                <!--end rel_thumb-->
-                                <div class="rel_right">
-                                    <h4><a href="single-post-right-sidebar.html">Lorem Ipsum dolar simt Amet simply
-                                            dummy Text Lorem Ipsum dolar</a></h4>
-                                    <div class="meta">
-                                        <span class="author">Posted in: <a href="#">Exam</a></span>
-                                        <span class="date">on: <a href="#">January 24, 2015</a></span>
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation...</p>
-                                </div>
-                                <!--end rel right-->
-                            </li>
+                           
+                            @endforeach
                         </ul>
                     </div>
                     <!--related_post_sec-->

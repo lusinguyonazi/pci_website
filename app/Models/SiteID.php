@@ -10,6 +10,6 @@ class SiteID extends Model
     use HasFactory;
 
     
-        protected $fillable = ['name', 'phone','phone2', 'image_path','email','facebook','instagram','twitter','youtube'];
+        protected $fillable = ['name', 'phone','phone2', 'image','email','facebook','instagram','twitter','youtube'];
     
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('site_i_d_s', function (Blueprint $table) {
             $table->id();
             $table->string('name')->default('PCI');
-            $table->string('image_path')->nullable();
+            $table->string('image')->nullable();
             $table->string('email')->default('pci@gmail.com');
             $table->string('phone')->default('instagram.com');
             $table->string('phone2')->nullable();

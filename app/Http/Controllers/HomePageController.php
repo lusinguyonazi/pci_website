@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\SiteID;
+use App\Models\News;
+
 
 
 use Illuminate\Http\Request;
@@ -15,8 +17,9 @@ class HomePageController extends Controller
     {
         //
         $data = siteID::all();
+        $news = News::all();
 
-        return view('public/pci_home',compact('data'));
+        return view('public/pci_home',compact('data','news'));
     }
 
     /**
