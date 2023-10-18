@@ -75,9 +75,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link has-arrow " href="../pages/chat-app.html">
+                <a class="nav-link has-arrow " href="{{route('news')}}">
                     <i data-feather="corner-left-down" class="nav-icon me-2 icon-xxs">
-                    </i> News & Events
+                    </i> News
                 </a>
             </li>
             <!-- Nav item -->

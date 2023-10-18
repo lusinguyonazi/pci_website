@@ -4,7 +4,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\SiteIDController;
 use App\Models\NewsAndEvents;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsAndEventsController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +17,11 @@ use App\Http\Controllers\NewsAndEventsController;
 |
 */
 
+Route::get('/test', function () {
+    return view('test');
+});
+
+
 Route::get('/', [HomePageController::class, 'index'])->name('homePage');
 
 
@@ -28,6 +33,7 @@ Route::prefix('admin')->group(function () {
     // Route::get('insert',[SiteIDController::class, 'show'])->name('insertID');
     Route::post('storeSiteID/{id}',[SiteIDController::class, 'store'])->name('storeID');
     Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
+    Route::get('news',[NewsController::class, 'showNews'])->name('news');
 
     
 });
