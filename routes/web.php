@@ -3,6 +3,7 @@
 use App\Http\Controllers\SiteIDController;
 use App\Models\NewsAndEvents;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsAndEventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,11 @@ Route::prefix('admin')->group(function () {
     // Route::get('siteID',[SiteIDController::class, 'index'])->name('siteID');
     // Route::get('insert',[SiteIDController::class, 'show'])->name('insertID');
     Route::post('store/{id}',[SiteIDController::class, 'store'])->name('storeID');
-    Route::get('update',[SiteIDController::class, 'show'])->name('updateID');
+    Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
 
     // News and Events
     Route::post('store/{id}',[NewsAndEventsIDController::class, 'store'])->name('storenews');
-    Route::get('update',[NewsAndEventsController::class, 'show'])->name('updatenews');
+    Route::get('updateNewsAndEvents',[NewsAndEventsController::class, 'show'])->name('updatenews');
 });
 
 Auth::routes();

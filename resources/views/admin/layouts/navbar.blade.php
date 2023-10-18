@@ -69,7 +69,7 @@
             </li>
             <!-- Nav item -->
             <li class="nav-item">
-                <a class="nav-link has-arrow " href="{{route('updateID')}}">
+                <a class="nav-link has-arrow " href="{{route('update.id')}}">
                     <i data-feather="calendar" class="nav-icon me-2 icon-xxs">
                     </i> Site Identities
                 </a>
