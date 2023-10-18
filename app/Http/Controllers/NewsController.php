@@ -42,8 +42,7 @@ class NewsController extends Controller
             $NewsImage = date('YmdHis') . "." .$image->getClientOriginalExtension();
             $image->move($destinationPath, $NewsImage);
             $request->image = "$NewsImage";
-
-}
+        }
 
 
         $news = new News();
@@ -77,14 +76,43 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'newsDate' => 'required|date',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           
+        ]);
+  
+         $data = $request->all();
+
+         if($image = $request->file('image')) {
+            $destinationPath = 'NewsImage';
+            $NewsImage = date('YmdHis') . "." .$image->getClientOriginalExtension();
+            $image->move($destinationPath, $NewsImage);
+            $request->image = "$NewsImage";
+        }else{
+            unset($data['image']);
+        }
+
+           
+            $news->update($data);
+
+
+
+      return redirect()->back()->with('message',' News updated Successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+   
+        public function destroy($id)
     {
-        //
+        $news = News::find($id);
+        $news->delete();
+        return redirect()->back()->with('message','News deleted Successfully');
     }
+    
 }
