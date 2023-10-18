@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SiteIDController;
+use App\Models\NewsAndEvents;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('public/pci_home');
 });
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/home', function () {
+        return view('admin.dashboard');
+    });
+    // Route::get('siteID',[SiteIDController::class, 'index'])->name('siteID');
+    // Route::get('insert',[SiteIDController::class, 'show'])->name('insertID');
+    Route::post('store/{id}',[SiteIDController::class, 'store'])->name('storeID');
+    Route::get('update',[SiteIDController::class, 'show'])->name('updateID');
+
+    // News and Events
+    Route::post('store/{id}',[NewsAndEventsIDController::class, 'store'])->name('storenews');
+    Route::get('update',[NewsAndEventsController::class, 'show'])->name('updatenews');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

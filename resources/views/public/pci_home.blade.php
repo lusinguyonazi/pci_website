@@ -1,0 +1,9 @@
+@extends('public.layouts.app')
+@section('content')
+    @include('public.layouts.slider')
+    @include('public.layouts.about')
+    @include('public.layouts.maincontant')
+    @include('public.layouts.counts')
+    @include('public.layouts.testimonies')
+    @include('public.layouts.patners')
+@endsection
