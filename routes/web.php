@@ -25,6 +25,8 @@ Route::get('/test', function () {
 Route::get('/', [HomePageController::class, 'index'])->name('homePage');
 
 
+
+
 Route::prefix('admin')->group(function () {
     Route::get('/home', function () {
         return view('admin.dashboard');
@@ -34,6 +36,7 @@ Route::prefix('admin')->group(function () {
     Route::post('storeSiteID/{id}',[SiteIDController::class, 'store'])->name('storeID');
     Route::get('updateSiteID',[SiteIDController::class, 'show'])->name('update.id');
     Route::get('news',[NewsController::class, 'showNews'])->name('news');
+    Route::post('store', [NewsController::class, 'store'])->name('news.store');
 
     
 });

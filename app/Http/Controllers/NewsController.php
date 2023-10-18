@@ -50,7 +50,7 @@ class NewsController extends Controller
         $news->title     = $request->title;
         $news->description    = $request->description;
         $news->image     = $request->image;
-        $news->newsDate =$request->newsDate;
+        $news->newsDate = $request->newsDate;
         $news ->save();
 
         return redirect()->back()->with('message','news added Successfully');
